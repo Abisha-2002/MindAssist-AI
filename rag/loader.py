@@ -13,32 +13,30 @@ from langchain_community.vectorstores import Chroma
 PERSIST_DIR = "./chroma_db"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
+# Get the absolute path to the project root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PDF_FOLDER = os.path.join(BASE_DIR, "data", "pdfs")
+
 @st.cache_resource
 def get_embeddings():
     """
     Initialize embedding model with proper error handling
     """
     try:
-        # Try to import and load the embedding model
         from langchain_huggingface import HuggingFaceEmbeddings
-        
-        # Set environment variable to avoid downloading issues
         os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
         
         return HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={'device': 'cpu'},
-            cache_folder="./models"  # Local cache folder
+            cache_folder="./models"
         )
     except ImportError:
-        # Fallback to sentence-transformers if langchain_huggingface is not installed
         try:
             from sentence_transformers import SentenceTransformer
             from langchain_community.embeddings import HuggingFaceEmbeddings
             
             st.info("🔄 Using sentence-transformers as fallback...")
-            
-            # Download and cache the model
             model = SentenceTransformer(EMBEDDING_MODEL)
             
             return HuggingFaceEmbeddings(
@@ -47,23 +45,39 @@ def get_embeddings():
             )
         except Exception as e:
             st.error(f"❌ Failed to load embedding model: {e}")
-            st.info("💡 Try running: pip install sentence-transformers")
             return None
     except Exception as e:
         st.error(f"❌ Failed to initialize embeddings: {e}")
         return None
 
-def load_and_chunk_pdfs(pdf_folder="data/pdfs/"):
+def load_and_chunk_pdfs(pdf_folder=None):
     """
     Load PDFs and split into chunks
     """
+    # Use absolute path
+    if pdf_folder is None:
+        pdf_folder = PDF_FOLDER
+    
+    # Debug: show where we're looking
+    st.info(f"📂 Looking for PDFs in: {pdf_folder}")
+    
+    # Create folder if it doesn't exist
     if not os.path.exists(pdf_folder):
-        os.makedirs(pdf_folder)
+        os.makedirs(pdf_folder, exist_ok=True)
         st.warning(f"📁 '{pdf_folder}' folder created. Add PDFs there.")
         return None
 
+    # List all files in the folder for debugging
+    try:
+        all_files = os.listdir(pdf_folder)
+        st.info(f"📄 Found {len(all_files)} files in folder: {all_files[:5]}...")
+    except Exception as e:
+        st.error(f"❌ Could not read folder: {e}")
+        return None
+
+    # Filter PDF files
     pdf_files = [
-        f for f in os.listdir(pdf_folder)
+        f for f in all_files
         if f.lower().endswith(".pdf")
     ]
 
@@ -118,14 +132,13 @@ def get_vector_store():
                 embedding_function=embeddings
             )
 
-            # Check if collection exists and has documents
             try:
                 count = vectordb._collection.count()
                 if count > 0:
                     st.success(f"✅ Loaded vector DB ({count} chunks)")
                     return vectordb
             except:
-                pass  # Collection might not exist yet
+                pass
         except Exception as e:
             st.warning(f"Database loading issue: {e}. Rebuilding...")
 
