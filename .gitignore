@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# API Keys & Secrets
+.streamlit/secrets.toml
+secrets.toml
+.env
+
+# Vector Database
+chroma_db/
+chroma/
+
+# Data files
+data/pdfs/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/cache/
+
+# Models (HUGE files - DO NOT UPLOAD!)
+models/
+*.pth
+*.pt
+*.bin
+*.onnx
+*.h5
+*.safetensors
+.huggingface/
+cache/
