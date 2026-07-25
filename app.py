@@ -292,4 +292,5 @@ elif run_button and not user_query:
 
 # Footer
 st.markdown("---")
-st.caption("MindAssist AI | FYP: Depression Risk Prediction | Agentic AI Assignment | Created By Wesly Jeyananthan Abisha")
+st.caption("MindAssist AI | FYP: Depression Risk Prediction | Agentic AI Assignment | Created By Wesly Jeyananthan Abisha")#   S t r e a m l i t   U I   F e a t u r e   B r a n c h  
+ 
