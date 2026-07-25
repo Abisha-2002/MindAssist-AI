@@ -14,9 +14,7 @@ secrets.toml
 chroma_db/
 chroma/
 
-# Data files
-data/pdfs/
-*.pdf
+
 
 # IDE
 .vscode/
