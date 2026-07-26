@@ -43,7 +43,7 @@ MindAssist AI follows multiple Agentic AI design patterns to coordinate task exe
 | 📚 Tool-Use Pattern | Uses external tools to retrieve information from local documents and the web. | Performs RAG retrieval using ChromaDB and web search using the Serper API. | `agents/research_agent.py`<br>`tools/web_search.py` |
 | 🔍 Reflection Pattern | Reviews, validates, and improves the generated response before presenting it to the user. | Ensures the final response is accurate, relevant, and evidence-based. | `agents/reflection_agent.py` |
 
-### 🔄 Workflow Summary
+  # 📸 Workflow Summary
 
 1. **Router Agent** identifies the user's intent.
 2. **Orchestrator Agent** plans and coordinates the workflow.
@@ -51,6 +51,9 @@ MindAssist AI follows multiple Agentic AI design patterns to coordinate task exe
 4. **Web Search Tool** gathers additional real-time information when required.
 5. **Reflection Agent** validates and refines the response.
 6. The validated answer is returned to the user.
+ 
+
+![Multi-Agent Workflow](images/multi-agent-workflow.png)
 
 # 🤖 Model Selection Strategy
 
@@ -327,11 +330,6 @@ chore:
 - 🔡 Sentence Transformers
 - 📝 HuggingFace Embeddings
 
-
-
-# 📸 Workflow Summary
-
-![Multi-Agent Workflow](images/multi-agent-workflow.png)
 
 
 
