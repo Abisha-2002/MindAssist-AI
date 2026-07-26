@@ -30,6 +30,27 @@ MindAssist AI solves this by using an **Agentic AI workflow** that can:
 # 🏗️ System Architecture
 ![Multi-Agent Workflow](images/Architecture.png)
 
+---
+
+# 🧩 Agentic Design Patterns
+
+MindAssist AI follows multiple Agentic AI design patterns to coordinate task execution, retrieval, validation, and response generation.
+
+| Design Pattern | Purpose | Implementation | Source File |
+|----------------|---------|----------------|-------------|
+| 🧭 Router Pattern | Classifies the user's intent and selects the appropriate workflow. | Routes user queries to the correct processing pipeline. | `agents/router_agent.py` |
+| 🎯 Orchestrator–Worker Pattern | Coordinates the overall workflow and delegates tasks to specialized agents. | Manages communication between Research Agent, Web Search, and Reflection Agent. | `agents/orchestrator.py` |
+| 📚 Tool-Use Pattern | Uses external tools to retrieve information from local documents and the web. | Performs RAG retrieval using ChromaDB and web search using the Serper API. | `agents/research_agent.py`<br>`tools/web_search.py` |
+| 🔍 Reflection Pattern | Reviews, validates, and improves the generated response before presenting it to the user. | Ensures the final response is accurate, relevant, and evidence-based. | `agents/reflection_agent.py` |
+
+### 🔄 Workflow Summary
+
+1. **Router Agent** identifies the user's intent.
+2. **Orchestrator Agent** plans and coordinates the workflow.
+3. **Research Agent** retrieves relevant information using RAG (ChromaDB).
+4. **Web Search Tool** gathers additional real-time information when required.
+5. **Reflection Agent** validates and refines the response.
+6. The validated answer is returned to the user.
 
 # 🤖 Model Selection Strategy
 
