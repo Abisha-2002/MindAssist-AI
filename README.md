@@ -219,6 +219,18 @@ streamlit run app.py
 
 https://mindassist-aigit.streamlit.app
 
+
+
+## 🎥 App Demo video
+
+[![Watch the MindAssist AI Demo Video](https://img.youtube.com/vi/VEJFvglpH5c/0.jpg)](https://youtu.be/VEJFvglpH5c)
+
+> **Demo Video:** A quick walkthrough of **MindAssist AI**, demonstrating depression risk prediction, PHQ-9 assessment, Retrieval-Augmented Generation (RAG), multi-agent workflow, and AI-powered responses using Groq/OpenRouter models.
+
+**🔗 YouTube Demo:** https://youtu.be/VEJFvglpH5c
+
+---
+
 ![Multi-Agent Workflow](images/out1.jpeg)
 ![Multi-Agent Workflow](images/out2.jpeg)
 ![Multi-Agent Workflow](images/out3.jpeg)
