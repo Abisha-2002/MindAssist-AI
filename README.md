@@ -315,21 +315,6 @@ test:
 chore:
 ```
 
-
-
-# ✅ Assignment Requirements Checklist
-
-| Requirement | Status |
-|-------------|--------|
-| 🤖 Agentic Design Patterns (≥3) | ✅ Completed |
-| 🔄 Agent Communication | ✅ JSON Messaging |
-| 🧠 Multi-Model Strategy | ✅ Groq + OpenRouter |
-| 📚 RAG Pipeline (20+ PDFs) | ✅ 26 Documents |
-| 🌐 Streamlit Deployment | ✅ Live |
-| 🔀 GitHub Workflow | ✅ Branches + PRs + Commits |
-
-
-
 # 🛠️ Technologies Used
 
 - 🐍 Python
