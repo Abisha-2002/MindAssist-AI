@@ -28,7 +28,7 @@ MindAssist AI solves this by using an **Agentic AI workflow** that can:
 - ✅ Validate and improve responses before presenting the final answer
 
 # 🏗️ System Architecture
-![Multi-Agent Workflow](images/Architecture.png)
+![Multi-Agent Workflow](images/Architecture.jepg)
 
 ---
 
