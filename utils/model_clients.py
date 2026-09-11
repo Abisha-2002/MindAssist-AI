@@ -29,8 +29,8 @@ def get_openrouter_client():
 
 # Model selection mapping - USING CONFIRMED WORKING MODELS
 MODELS = {
-    "router": "llama-3.1-8b-instant",                    # Groq - Fast
-    "reasoning": "meta-llama/llama-3.1-70b-instruct",   # OpenRouter - Free & Working!
+    "router": "openai/gpt-oss-20b",
+    "reasoning": "meta-llama/llama-3.1-70b-instruct",
 }
 
 def get_model_config(task_type):
